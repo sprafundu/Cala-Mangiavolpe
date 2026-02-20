@@ -7,6 +7,7 @@ const footerLinks = [
   { label: 'Itinerari', href: '/itinerari' },
   { label: 'Prezzi', href: '/prezzi' },
   { label: 'Prenotazioni', href: '/prenotazioni' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Contatti', href: '/contatti' },
 ];
 
