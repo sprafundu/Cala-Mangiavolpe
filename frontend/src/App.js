@@ -11,6 +11,7 @@ import Itinerari from "@/pages/Itinerari";
 import Prezzi from "@/pages/Prezzi";
 import Prenotazioni from "@/pages/Prenotazioni";
 import Contatti from "@/pages/Contatti";
+import FAQ from "@/pages/FAQ";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
