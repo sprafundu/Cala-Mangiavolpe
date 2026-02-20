@@ -9,7 +9,7 @@
 /coverage
 
 # production
-/build
+# /build  -- INCLUSO per permettere download FTP
 
 # misc
 .DS_Store
