@@ -1,22 +1,24 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Menu, X, Anchor } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, Anchor, MessageCircle } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useLanguage } from '@/context/LanguageContext';
 import { FAREHARBOR_URL, WHATSAPP_URL } from '@/constants';
-import { MessageCircle } from 'lucide-react';
 
 const navLinks = [
-  { label: 'La Flotta', href: '#flotta' },
-  { label: 'Destinazioni', href: '#destinazioni' },
-  { label: 'Come Funziona', href: '#come-funziona' },
-  { label: 'Chi Siamo', href: '#chi-siamo' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Home', href: '/' },
+  { label: 'Itinerari', href: '/itinerari' },
+  { label: 'Prezzi', href: '/prezzi' },
+  { label: 'Prenotazioni', href: '/prenotazioni' },
+  { label: 'Contatti', href: '/contatti' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { language, setLanguage, LANGUAGES } = useLanguage();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -24,51 +26,46 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = useCallback((e, href) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }, []);
+  const showTransparent = isHome && !scrolled;
 
   return (
     <header
       data-testid="navbar"
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'backdrop-blur-md bg-white/90 shadow-sm border-b border-slate-100'
-          : 'bg-transparent'
+        showTransparent
+          ? 'bg-transparent'
+          : 'backdrop-blur-md bg-white/90 shadow-sm border-b border-slate-100'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <a
-          href="#"
+        <Link
+          to="/"
           data-testid="logo-link"
           className="flex items-center gap-2"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
-          <Anchor className={`h-6 w-6 transition-colors duration-300 ${scrolled ? 'text-turquoise' : 'text-white'}`} />
-          <div className={`transition-colors duration-300 ${scrolled ? 'text-ocean' : 'text-white'}`}>
+          <Anchor className={`h-6 w-6 transition-colors duration-300 ${showTransparent ? 'text-white' : 'text-turquoise'}`} />
+          <div className={`transition-colors duration-300 ${showTransparent ? 'text-white' : 'text-ocean'}`}>
             <span className="font-heading text-lg lg:text-xl font-bold leading-tight block">Rental Boat</span>
             <span className="font-body text-[10px] lg:text-xs tracking-widest uppercase leading-tight block opacity-80">Cala Mangiavolpe</span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
-              data-testid={`nav-link-${link.href.slice(1)}`}
-              onClick={(e) => handleNavClick(e, link.href)}
+              to={link.href}
+              data-testid={`nav-link-${link.href === '/' ? 'home' : link.href.slice(1)}`}
               className={`font-body text-sm font-medium transition-all duration-300 hover:opacity-100 ${
-                scrolled ? 'text-ocean/70 hover:text-turquoise' : 'text-white/80 hover:text-white'
+                location.pathname === link.href
+                  ? showTransparent ? 'text-white' : 'text-turquoise'
+                  : showTransparent ? 'text-white/70 hover:text-white' : 'text-ocean/60 hover:text-turquoise'
               }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -82,8 +79,8 @@ export default function Navbar() {
                 onClick={() => setLanguage(lang.code)}
                 className={`px-1.5 py-0.5 text-[11px] font-bold rounded transition-all duration-300 ${
                   language === lang.code
-                    ? scrolled ? 'text-turquoise bg-turquoise/10' : 'text-white bg-white/20'
-                    : scrolled ? 'text-ocean/40 hover:text-ocean/70' : 'text-white/40 hover:text-white/70'
+                    ? showTransparent ? 'text-white bg-white/20' : 'text-turquoise bg-turquoise/10'
+                    : showTransparent ? 'text-white/40 hover:text-white/70' : 'text-ocean/40 hover:text-ocean/70'
                 }`}
               >
                 {lang.label}
@@ -111,8 +108,8 @@ export default function Navbar() {
                 onClick={() => setLanguage(lang.code)}
                 className={`px-1 py-0.5 text-[10px] font-bold rounded transition-all duration-300 ${
                   language === lang.code
-                    ? scrolled ? 'text-turquoise' : 'text-white'
-                    : scrolled ? 'text-ocean/30' : 'text-white/30'
+                    ? showTransparent ? 'text-white' : 'text-turquoise'
+                    : showTransparent ? 'text-white/30' : 'text-ocean/30'
                 }`}
               >
                 {lang.label}
@@ -123,7 +120,7 @@ export default function Navbar() {
             <SheetTrigger asChild>
               <button
                 data-testid="mobile-menu-toggle"
-                className={`p-2 transition-colors duration-300 ${scrolled ? 'text-ocean' : 'text-white'}`}
+                className={`p-2 transition-colors duration-300 ${showTransparent ? 'text-white' : 'text-ocean'}`}
                 aria-label="Menu"
               >
                 <Menu className="h-6 w-6" />
@@ -144,15 +141,17 @@ export default function Navbar() {
                 </div>
                 <div className="flex-1 p-6 flex flex-col gap-1">
                   {navLinks.map((link) => (
-                    <a
+                    <Link
                       key={link.href}
-                      href={link.href}
-                      data-testid={`mobile-nav-${link.href.slice(1)}`}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className="font-body text-base font-medium text-ocean/80 hover:text-turquoise py-3 border-b border-slate-50 transition-colors duration-300"
+                      to={link.href}
+                      data-testid={`mobile-nav-${link.href === '/' ? 'home' : link.href.slice(1)}`}
+                      onClick={() => setMobileOpen(false)}
+                      className={`font-body text-base font-medium py-3 border-b border-slate-50 transition-colors duration-300 ${
+                        location.pathname === link.href ? 'text-turquoise' : 'text-ocean/80 hover:text-turquoise'
+                      }`}
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="p-6 space-y-3 border-t border-slate-100">
