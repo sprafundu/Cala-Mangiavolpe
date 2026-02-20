@@ -1,0 +1,178 @@
+{
+  "identity": {
+    "name": "E1 - The Anti-AI Designer",
+    "persona": "Bold, emotional, content-driven. Avoiding generic AI tropes.",
+    "mission": "Create a Mediterranean summer dream. High-end, airy, trustworthy, and incredibly fast."
+  },
+  "theme": {
+    "mode": "light",
+    "tone": "Mediterranean Luxury, Relaxed, Adventurous, Transparent",
+    "visual_mood": "Ocean Breeze. Crystal clear water, white sand, navy accents."
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Cormorant Garamond, serif",
+      "weights": ["400", "600", "700"],
+      "usage": "All section titles, hero text. Use italic variant for emphasis words."
+    },
+    "body": {
+      "font_family": "Manrope, sans-serif",
+      "weights": ["400", "500", "700"],
+      "usage": "Paragraphs, navigation, buttons, pricing details."
+    },
+    "rules": [
+      "Headings above 3rem must use tracking-tight.",
+      "Overlines must be uppercase and tracking-widest.",
+      "Never use Inter for headings."
+    ]
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "name": "Ocean Deep",
+        "hex": "#0A2342",
+        "tailwind_var": "213 73% 15%",
+        "usage": "Headings, Strong borders, Active states"
+      },
+      "secondary": {
+        "name": "Sardinian Turquoise",
+        "hex": "#008C9E",
+        "tailwind_var": "186 100% 31%",
+        "usage": "Primary CTAs, Icons, Highlights"
+      },
+      "background": {
+        "name": "White Foam",
+        "hex": "#FFFFFF",
+        "tailwind_var": "0 0% 100%",
+        "usage": "Main background, Cards"
+      },
+      "surface": {
+        "name": "Warm Sand",
+        "hex": "#FAF9F6",
+        "tailwind_var": "40 20% 97%",
+        "usage": "Secondary sections, Alternating backgrounds"
+      },
+      "text": {
+        "name": "Deep Slate",
+        "hex": "#1E293B",
+        "tailwind_var": "215 25% 27%",
+        "usage": "Body text"
+      },
+      "muted": {
+        "name": "Sea Mist",
+        "hex": "#F1F5F9",
+        "tailwind_var": "210 40% 96%",
+        "usage": "Borders, Disabled states"
+      }
+    },
+    "gradients": {
+      "hero_overlay": "linear-gradient(to bottom, rgba(10, 35, 66, 0.3), rgba(10, 35, 66, 0.1))",
+      "text_gradient": "linear-gradient(135deg, #0A2342 0%, #008C9E 100%)"
+    }
+  },
+  "layout": {
+    "spacing_scale": "Relaxed. Use p-8, p-12, p-16 for sections. Gap-6 or Gap-8 for grids.",
+    "container_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_systems": {
+      "destinations": "Tetris Grid (Bento Style). Mix 2x2 squares with 1x2 tall rectangles.",
+      "fleet": "Simple 1x3 or 1x2 Grid with generous gap.",
+      "features": "Zig-zag layout (Text Left/Image Right -> Image Left/Text Right)."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-secondary text-white rounded-full px-8 py-4 font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300",
+      "secondary": "border-2 border-primary text-primary rounded-full px-8 py-4 font-bold hover:bg-primary hover:text-white transition-all duration-300",
+      "whatsapp": "bg-[#25D366] text-white rounded-full flex items-center gap-2 hover:bg-[#128C7E] transition-colors"
+    },
+    "cards": {
+      "style": "bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300",
+      "image_aspect": "aspect-[4/3] object-cover rounded-t-2xl"
+    },
+    "navbar": {
+      "style": "fixed top-0 w-full z-50 transition-all duration-300",
+      "glass": "backdrop-blur-md bg-white/80 border-b border-white/20 shadow-sm"
+    }
+  },
+  "motion": {
+    "scroll": "Smooth scroll behavior (css: scroll-behavior: smooth)",
+    "parallax": "Hero image should move slower than scroll (use simple transform: translateY)",
+    "fade_in": "Elements should fade in and move up slightly on scroll into view.",
+    "hover": "Subtle lift (-4px) and shadow increase."
+  },
+  "images": {
+    "hero": [
+      {
+        "url": "https://images.pexels.com/photos/29489683/pexels-photo-29489683.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Aerial view of turquoise waters La Maddalena",
+        "category": "hero_main"
+      },
+      {
+        "url": "https://images.pexels.com/photos/28190696/pexels-photo-28190696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Rocky cliffs and tranquil blue waters",
+        "category": "hero_secondary"
+      }
+    ],
+    "fleet": [
+      {
+        "url": "https://images.pexels.com/photos/5730197/pexels-photo-5730197.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Lone inflatable boat floating",
+        "category": "fleet_zodiac"
+      },
+      {
+        "url": "https://images.pexels.com/photos/30094170/pexels-photo-30094170.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Docked red inflatable boats",
+        "category": "fleet_docked"
+      }
+    ],
+    "destinations": [
+      {
+        "url": "https://images.unsplash.com/photo-1604321830182-faf7cfca8b55?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHwxfHxTcGFyZ2klMjBJc2xhbmQlMjBiZWFjaCUyMHNhcmRpbmlhJTIwYWVyaWFsfGVufDB8fHx8MTc3MTU3ODQ4MHww&ixlib=rb-4.1.0&q=85",
+        "alt": "Spargi Island white boat blue water",
+        "category": "destination_spargi"
+      },
+      {
+        "url": "https://images.pexels.com/photos/35531263/pexels-photo-35531263.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Budelli Pink Beach serene",
+        "category": "destination_budelli"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1604321929957-f7bc464c49da?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHw0fHxTcGFyZ2klMjBJc2xhbmQlMjBiZWFjaCUyMHNhcmRpbmlhJTIwYWVyaWFsfGVufDB8fHx8MTc3MTU3ODQ4MHww&ixlib=rb-4.1.0&q=85",
+        "alt": "Rock formation blue water",
+        "category": "destination_rocks"
+      }
+    ],
+    "atmosphere": [
+      {
+        "url": "https://images.unsplash.com/photo-1597822759119-98ac55426359?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwzfHxoYXBweSUyMGNvdXBsZSUyMG9uJTIwYm9hdCUyMG1lZGl0ZXJyYW5lYW4lMjBzdW5zZXR8ZW58MHx8fHwxNzcxNTc4NDgzfDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Silhouette of boat on sea sunset",
+        "category": "mood_sunset"
+      }
+    ]
+  },
+  "universal_guidelines": [
+    "Do not use gradients for dark colors.",
+    "Do not center align the app container globally.",
+    "Use glass-morphism with backdrop-blur-md for the sticky navbar.",
+    "Add transition-all duration-300 to all interactive elements.",
+    "Use data-testid attributes for all interactive elements.",
+    "Use lucide-react for icons.",
+    "Use sonner for toast notifications."
+  ],
+  "implementation_steps": [
+    "1. Setup Tailwind Colors in index.css (override :root vars).",
+    "2. Install required fonts (Cormorant Garamond, Manrope) via Google Fonts import.",
+    "3. Create Layout wrapper with Navbar and Footer.",
+    "4. Build Hero component with Parallax and Carousel.",
+    "5. Build Fleet section with Cards.",
+    "6. Build Destinations section with Bento Grid.",
+    "7. Build Booking/Pricing section with FareHarbor integration.",
+    "8. Add smooth scroll and animations."
+  ],
+  "content_text": {
+    "hero_title": "Discover La Maddalena's Hidden Gems",
+    "hero_subtitle": "Premium Rubber Boat Rentals without a license. Experience the freedom of the Sardinian sea.",
+    "cta_main": "Prenota Ora (Book Now)",
+    "cta_whatsapp": "WhatsApp Chat"
+  }
+}
