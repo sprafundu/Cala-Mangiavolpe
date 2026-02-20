@@ -35,6 +35,7 @@ function App() {
               <Route path="/prezzi" element={<Prezzi />} />
               <Route path="/prenotazioni" element={<Prenotazioni />} />
               <Route path="/contatti" element={<Contatti />} />
+              <Route path="/faq" element={<FAQ />} />
             </Routes>
           </main>
           <Footer />
