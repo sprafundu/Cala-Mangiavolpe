@@ -1,22 +1,16 @@
-import { Anchor, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Anchor, MapPin, Phone, Clock } from 'lucide-react';
 import { FAREHARBOR_URL, WHATSAPP_URL, WHATSAPP_NUMBER, FACEBOOK_URL, INSTAGRAM_URL, MAPS_EMBED_URL } from '@/constants';
-import ScrollReveal from '@/components/ScrollReveal';
 
 const footerLinks = [
-  { label: 'La Flotta', href: '#flotta' },
-  { label: 'Destinazioni', href: '#destinazioni' },
-  { label: 'Come Funziona', href: '#come-funziona' },
-  { label: 'Chi Siamo', href: '#chi-siamo' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Home', href: '/' },
+  { label: 'Itinerari', href: '/itinerari' },
+  { label: 'Prezzi', href: '/prezzi' },
+  { label: 'Prenotazioni', href: '/prenotazioni' },
+  { label: 'Contatti', href: '/contatti' },
 ];
 
 export default function Footer() {
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer data-testid="footer" className="bg-ocean text-white">
       {/* Google Maps */}
@@ -81,14 +75,13 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    data-testid={`footer-link-${link.href.slice(1)}`}
+                  <Link
+                    to={link.href}
+                    data-testid={`footer-link-${link.href === '/' ? 'home' : link.href.slice(1)}`}
                     className="font-body text-sm text-white/50 hover:text-turquoise transition-colors duration-300"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
